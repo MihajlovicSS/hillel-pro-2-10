@@ -1,10 +1,12 @@
 'use strict'
 
 function Hamburger(size) {
+    this.toppings = [];
     this.price = size.price
     this.callories = size.callories
 }
 Hamburger.prototype.addTopping = function(topping){
+    this.toppings.push(topping.name)
     this.price += topping.price
     this.callories += topping.callories
 }
@@ -27,34 +29,35 @@ Hamburger.SIZE_BIG = {
     callories: 40
 }
 Hamburger.TOPPING_MAYO = {
+    name: 'mayo',
     price: 20,
     callories: 42
 }
 Hamburger.TOPPING_CHEESE = {
+    name: 'cheese',
     price: 10,
     callories: 20
 }
 Hamburger.TOPPING_POTATO = {
+    name: 'potato',
     price: 15,
     callories: 10
 }
 Hamburger.TOPPING_SEASONING = {
+    name: 'seasoning',
     price: 15,
     callories: 0
 }
 Hamburger.TOPPING_SALAD = {
+    name: 'salad',
     price: 20,
     callories: 5
 }
 
 const hamburger = new Hamburger(Hamburger.SIZE_SMALL)
-console.log(hamburger)
 hamburger.addTopping(Hamburger.TOPPING_MAYO)
-console.log(hamburger)
 hamburger.addTopping(Hamburger.TOPPING_POTATO)
-console.log(hamburger)
 hamburger.addTopping(Hamburger.TOPPING_POTATO)
-console.log(hamburger)
 
-console.log('Price with sauce: ' + hamburger.getPrice());
-console.log('Callories with sauce: ' + hamburger.getCallories());
+console.log(`Price with ${hamburger.toppings.join(', ')}: ` + hamburger.getPrice());
+console.log(`Callories with ${hamburger.toppings.join(', ')}: ` + hamburger.getCallories());
